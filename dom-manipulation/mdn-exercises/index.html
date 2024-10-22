@@ -35,15 +35,33 @@
         const input = document.getElementById('item');
         const button = document.querySelector("button");
         button.addEventListener("click", () => {
-            let inputValue = input.value;
+            let inputValue = input.value.trim();
             if (inputValue === '') {
-                alert('Please enter an item.');
+                alert('You\'ve not entered an item! Please enter one.');
+                return
             }
             else {
             alert(inputValue + ' added!');
             }
+
+            const li = document.createElement('li'); 
+            const span = document.createElement('span'); 
+            const deleteButton = document.createElement('button'); 
+    
+            span.textContent = inputValue; 
+            deleteButton.textContent = 'Delete'; 
+
+            li.appendChild(span);
+            li.appendChild(deleteButton);
+            ul.appendChild(li);
+
+            deleteButton.addEventListener("click", () => {
+                ul.removeChild(li); 
             });
 
+            input.value = ''; 
+            input.focus(); 
+        });
     </script>
   </body>
 </html>
