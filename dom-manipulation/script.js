@@ -36,3 +36,13 @@ clicker.addEventListener("click", function (e) {
 clicker.addEventListener("click", function (e) {
     e.target.style.background = "blue";
   });
+
+
+const buttons = document.querySelectorAll("button");
+
+
+buttons.forEach((button) => {
+  button.addEventListener("dblclick", () => {
+    alert(button.id);
+  });
+});
