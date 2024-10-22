@@ -1,9 +1,30 @@
-const pElement = document.createElement('p');
-pElement.textContent = "Hey I'm red!";
-pElement.style.color = 'red';
-document.body.appendChild(pElement);
+const divElement = document.createElement('div');
+divElement.setAttribute("style", "background-color: pink; border: 1px solid black;");
 
-const hElement = document.createElement('h3');
-hElement.textContent = "Hey I'm a blue h3!";
-hElement.style.color = 'blue';
-document.body.appendChild(hElement);
+const h1Element = document.createElement('h1');
+h1Element.textContent = "I'm in a div";
+
+const pElement = document.createElement('p');
+pElement.textContent = "ME TOO!";
+
+divElement.appendChild(h1Element);
+divElement.appendChild(pElement);
+
+document.body.appendChild(divElement);
+
+const btn1 = document.querySelector("#btn1");
+const btn2 = document.querySelector("#btn2");
+
+btn1.addEventListener("click", () => {
+  alert("Hello World");
+});
+
+btn2.addEventListener("click", () => {
+    alert("This is button 2");
+  });
+
+const clicker = document.querySelector("#clicker");
+
+clicker.addEventListener("click", function (e) {
+    console.log(e); 
+});
