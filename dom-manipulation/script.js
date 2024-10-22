@@ -28,3 +28,11 @@ const clicker = document.querySelector("#clicker");
 clicker.addEventListener("click", function (e) {
     console.log(e); 
 });
+
+clicker.addEventListener("click", function (e) {
+    console.log(e.target);
+  });
+
+clicker.addEventListener("click", function (e) {
+    e.target.style.background = "blue";
+  });
