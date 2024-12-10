@@ -1,14 +1,15 @@
-function isEmpty(obj){
-    for (let key in obj) {
-        return false;
+let salaries = {
+    John: 100,
+    Ann: 160,
+    Pete: 130
+};
+
+function sumSalaries(salaries) {
+    let sum = 0;
+    for (let salary in salaries) {
+        sum += salaries[salary];
     }
-    return true;
+    return sum;
 }
 
-let schedule = {};
-
-console.log(isEmpty(schedule)); // true
-
-schedule["8:30"] = "get up";
-
-console.log(isEmpty(schedule)); // false
+console.log(sumSalaries(salaries)); // 390
