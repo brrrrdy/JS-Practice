@@ -13,6 +13,10 @@ function sumOfTripledEvens(array) {
     return sum;
   }
 
+  const sampleArray = [1, 2, 3, 4, 5, 6];
+
+  console.log(sumOfTripledEvens(sampleArray));
+
   /*
 
   As an example of what we mean, let’s consider a sumOfTripledEvens function. It will:
@@ -30,3 +34,4 @@ Can you try thinking of how you could implement a function like that using pseud
 So using that logic, you may end up implementing something like this:
 
 */
+
