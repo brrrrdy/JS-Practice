@@ -1,4 +1,4 @@
-function sumOfTripledEvens(array) {
+/* function sumOfTripledEvens(array) {
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
       // Step 1: If the element is an even number
@@ -15,7 +15,18 @@ function sumOfTripledEvens(array) {
 
   const sampleArray = [1, 2, 3, 4, 5, 6];
 
+  console.log(sumOfTripledEvens(sampleArray)); */
+
+
+  function sumOfTripledEvens (array) {
+    return array.map(number => number * 3)
+                .filter(number => number % 2 === 0)
+                .reduce((acc, number) => acc + number, 0);
+  }
+
+  const sampleArray = [1, 2, 3, 4, 5, 6, 7, 8];
   console.log(sumOfTripledEvens(sampleArray));
+
 
   /*
 
