@@ -31,7 +31,9 @@ Can you try thinking of how you could implement a function like that using pseud
     We need to transform those numbers by multiplying them by 3.
     Finally, we need to add the result up from the previous transformation.
 
-So using that logic, you may end up implementing something like this:
+1. Map method
+2. Filter method
+3. Reduce method
 
 */
 
