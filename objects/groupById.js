@@ -1,5 +1,5 @@
 function groupById(users) {
-
+  return Object.fromEntries(users.map(user => [user.id, user]));
 }
 
 let users = [
@@ -7,6 +7,8 @@ let users = [
     {id: 'ann', name: "Ann Smith", age: 24},
     {id: 'pete', name: "Pete Peterson", age: 31},
   ];
+
+  console.log(groupById(users));
   
 /*
 
