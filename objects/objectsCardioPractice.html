@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio 💪</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <script>
+
+
+const exercises = [
+    { name: 'Running', type: 'cardio', duration: 30 },
+    { name: 'Push-ups', type: 'strength', duration: 10 },
+    { name: 'Cycling', type: 'cardio', duration: 45 },
+    { name: 'Squats', type: 'strength', duration: 15 },
+    { name: 'Swimming', type: 'cardio', duration: 60 }
+];
+
+function filterCardioExercises(exercises) {
+    return exercises.filter(exercise => exercise.type === 'cardio');
+}
+
+console.table(filterCardioExercises(exercises));
+
+// let cardioExercises = []
+// for (let i = 0; i < exercises.length; i++) {
+//     if (exercises[i].type === 'cardio') {
+//         cardioExercises.push(exercises[i]);
+//     }
+// }
+
+// console.log(cardioExercises);
+
+// Write a function named filterCardioExercises that filters the exercises array to return only the exercises of type 'cardio'
+
+</script>
