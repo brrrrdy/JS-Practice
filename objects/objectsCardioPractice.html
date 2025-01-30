@@ -38,6 +38,8 @@ console.table(filterCardioExercises(exercises));
 
 // Write a function named mapExerciseDurations that maps the exercises array to return an array of strings. Each string should describe the exercise name and its duration in minutes.
 
+// 1. .Map
+
 function mapExerciseDurations(exercises) {
     return exercises.map(exercise => `${exercise.name} lasts for approximately ${exercise.duration} minutes.`);
 }
@@ -45,6 +47,8 @@ function mapExerciseDurations(exercises) {
 console.log(mapExerciseDurations(exercises))
 
 // Write a function named sortExercisesByDuration that sorts the exercises array by duration from shortest to longest.
+
+// 2. .Sort
 
 function sortExercisesByDuration(exercises) {
     return exercises.sort((a, b) => a.duration - b.duration);
@@ -55,6 +59,8 @@ console.table(sortExercisesByDuration(exercises));
 
 // if duration is smaller than other entries, return that exercise with string 'the shortest exercise available by duration is (name) lasting (duration) minutes'.
 //  math.min?
+
+// 3. .Reduce
 
 function returnShortestExercise(exercises) {
     const shortestEx = exercises.reduce((smallest, exercise) => {
@@ -67,9 +73,31 @@ console.log(returnShortestExercise(exercises));
 
 function exercisesTotal(exercises) {
     const exTotal= exercises.reduce((total, exercise) => total + exercise.duration, 0);
-    return `If youn were to complete all exercises in one day, it would take you ${exTotal} minutes, or, ${Math.floor(exTotal / 60)} hours and ${exTotal % 60} minutes.`;
+    return `If you were to complete all exercises in one day, it would take you ${exTotal} minutes, or, ${Math.floor(exTotal / 60)} hours and ${exTotal % 60} minutes.`;
 }
 
 console.log(exercisesTotal(exercises));
+
+// 4. .Some
+
+// Write a function named longerThan60 that checks if there is at least one exercise in the exercises array that lasts for 60 minutes or more.
+
+function longerThan60(exercises) {
+   const over60 = exercises.some(exercise => exercise.duration >= 60);
+   return over60 ? 'Yes there are exercises that take over 60 minutes in the plan.' : 'No, there are no exercises that take over 60 minutes.';
+}
+
+console.log(longerThan60(exercises));
+
+// // 5. .Every
+
+// Write a function named areAllExercisesCardio that checks if all exercises in the exercises array are of type 'cardio'.
+
+function allCardio(exercises) {
+    const isAllCardio = exercises.every(exercise => exercise.type === 'cardio');
+    return isAllCardio ? 'Yes, all exercises are cardio based' : 'No, not all exercises are cardio based';
+}
+
+console.log(allCardio(exercises));
 
 </script>
