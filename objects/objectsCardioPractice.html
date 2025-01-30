@@ -14,9 +14,12 @@ const exercises = [
     { name: 'Running', type: 'cardio', duration: 30 },
     { name: 'Push-ups', type: 'strength', duration: 10 },
     { name: 'Cycling', type: 'cardio', duration: 45 },
+    { name: 'Breathing', type: 'cardio', duration: 5 },
     { name: 'Squats', type: 'strength', duration: 15 },
     { name: 'Swimming', type: 'cardio', duration: 60 }
 ];
+
+// Write a function named filterCardioExercises that filters the exercises array to return only the exercises of type 'cardio'
 
 function filterCardioExercises(exercises) {
     return exercises.filter(exercise => exercise.type === 'cardio');
@@ -33,6 +36,40 @@ console.table(filterCardioExercises(exercises));
 
 // console.log(cardioExercises);
 
-// Write a function named filterCardioExercises that filters the exercises array to return only the exercises of type 'cardio'
+// Write a function named mapExerciseDurations that maps the exercises array to return an array of strings. Each string should describe the exercise name and its duration in minutes.
+
+function mapExerciseDurations(exercises) {
+    return exercises.map(exercise => `${exercise.name} lasts for approximately ${exercise.duration} minutes.`);
+}
+
+console.log(mapExerciseDurations(exercises))
+
+// Write a function named sortExercisesByDuration that sorts the exercises array by duration from shortest to longest.
+
+function sortExercisesByDuration(exercises) {
+    return exercises.sort((a, b) => a.duration - b.duration);
+}
+
+console.table(sortExercisesByDuration(exercises));
+
+
+// if duration is smaller than other entries, return that exercise with string 'the shortest exercise available by duration is (name) lasting (duration) minutes'.
+//  math.min?
+
+function returnShortestExercise(exercises) {
+    const shortestEx = exercises.reduce((smallest, exercise) => {
+        return exercise.duration < smallest.duration ? exercise : smallest;
+    }, exercises[0]);
+    return `The shortest exercise available by duration is ${shortestEx.name} lasting ${shortestEx.duration} minutes.`;
+}
+
+console.log(returnShortestExercise(exercises));
+
+function exercisesTotal(exercises) {
+    const exTotal= exercises.reduce((total, exercise) => total + exercise.duration, 0);
+    return `If youn were to complete all exercises in one day, it would take you ${exTotal} minutes, or, ${Math.floor(exTotal / 60)} hours and ${exTotal % 60} minutes.`;
+}
+
+console.log(exercisesTotal(exercises));
 
 </script>
