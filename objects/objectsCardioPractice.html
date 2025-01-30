@@ -16,6 +16,7 @@ const exercises = [
     { name: 'Cycling', type: 'cardio', duration: 45 },
     { name: 'Breathing', type: 'cardio', duration: 5 },
     { name: 'Squats', type: 'strength', duration: 15 },
+    { name: 'Crossfit', type: 'combi', duration: 60 },
     { name: 'Swimming', type: 'cardio', duration: 60 }
 ];
 
@@ -99,5 +100,46 @@ function allCardio(exercises) {
 }
 
 console.log(allCardio(exercises));
+
+// 6. .Find
+
+// Write a function named findFirstStrengthExercise that finds the first exercise in the exercises array that is of type 'strength'.
+
+const strengthType = exercises.find(exercise => exercise.type === 'strength');
+
+console.log(strengthType);
+
+// 7. .findIndex
+
+// Write a function named findFirstCardioIndex that finds the index of the first exercise in the exercises array that is of type 'cardio'.
+
+const index = exercises.findIndex(exercise => exercise.type === 'combi');
+
+console.log(index);
+
+// 8. .Slice
+
+// Write a function named getSubarrayOfExercises that returns a subarray of the exercises array, containing only the exercises from the second to the fourth exercise (inclusive).
+
+function slicedArray(exercises) {
+return exercises.slice(1, 5);
+}
+
+console.table(slicedArray(exercises));
+
+// 9. .Splice
+
+// Write a function named removeExerciseByName that removes an exercise from the exercises array based on its name.
+
+function splicedArray(exercises, name) {
+    const index = exercises.findIndex(exercise => exercise.name === name);
+    if (index !== -1) {
+        exercises.splice(index, 1);
+    }
+    return exercises;
+}
+
+console.table(splicedArray(exercises, 'Cycling'));
+
 
 </script>
