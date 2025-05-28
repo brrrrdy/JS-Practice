@@ -1,83 +1,79 @@
-// let globalAge = 23; // This is a global variable
+// function Clock({ template }) {
+//   let timer;
 
-// // This is a function - and hey, a curly brace indicating a block
-// function printAge (age) {
-//   var varAge = 34; // This is a function scoped variable
+//   function render() {
+//     let date = new Date();
 
-//   // This is yet another curly brace, and thus a block
-//   if (age > 0) {
-//     // This is a block-scoped variable that exists
-//     // within its nearest enclosing block, the if's block
-//     const constAge = age * 2;
-//     console.log(constAge);
+//     let hours = date.getHours();
+//     if (hours < 10) hours = "0" + hours;
+
+//     let mins = date.getMinutes();
+//     if (mins < 10) mins = "0" + mins;
+
+//     let secs = date.getSeconds();
+//     if (secs < 10) secs = "0" + secs;
+
+//     let output = template
+//       .replace("h", hours)
+//       .replace("m", mins)
+//       .replace("s", secs);
+
+//     console.log(output);
 //   }
 
-//   // ERROR! We tried to access a block scoped variable
-//   // not within its scope
-//   console.log(constAge);
-// }
+//   this.stop = function () {
+//     clearInterval(timer);
+//   };
 
-// printAge(globalAge);
-
-// // ERROR! We tried to access a function scoped variable
-// // outside the function it's defined in
-// console.log(varAge);
-
-// function makeAdding(firstNumber) {
-//   // "first" is scoped within the makeAdding function
-//   const first = firstNumber;
-//   return function resulting(secondNumber) {
-//     // "second" is scoped within the resulting function
-//     const second = secondNumber;
-//     return first + second;
+//   this.start = function () {
+//     render();
+//     timer = setInterval(render, 1000);
 //   };
 // }
-// // but we've not seen an example of a "function"
-// // being returned, thus far - how do we use it?
 
-// const add5 = makeAdding(5);
-// console.log(add5(2)); // logs 7
+// let clock = new Clock({ template: "h:m:s" });
+// clock.start();
 
-// const User = function (name) {
-//   this.name = name;
-//   this.discordName = "@" + name;
-// };
-// // hey, this is a constructor -
-// // then this can be refactored into a factory!
+class Clock {
+  // Define a class named Clock
+  constructor({ template }) {
+    // Constructor receives an object with a 'template' property
+    this.template = template; // Save the template string to the instance
+    this.timer = null; // Initialize timer property (will hold setInterval ID)
+  }
 
-// function createUser(name) {
-//   const discordName = "@" + name;
-//   return { name, discordName };
-// }
-// // and that's very similar, except since it's just a function,
-// // we don't need a new keyword
+  render() {
+    // Method to display the current time
+    let date = new Date(); // Create a Date object for current date and time
 
-// console.log(createUser("Tom"));
+    let hours = date.getHours(); // Get current hour (0–23)
+    if (hours < 10) hours = "0" + hours; // Pad with '0' if less than 10
 
-// function createUser(name) {
-//   const discordName = "@" + name;
+    let mins = date.getMinutes(); // Get current minutes
+    if (mins < 10) mins = "0" + mins; // Pad with '0' if less than 10
 
-//   let reputation = 0;
-//   const getReputation = () => reputation;
-//   const giveReputation = () => reputation++;
+    let secs = date.getSeconds(); // Get current seconds
+    if (secs < 10) secs = "0" + secs; // Pad with '0' if less than 10
 
-//   return { name, discordName, getReputation, giveReputation };
-// }
+    let output = this.template // Format the time string based on the template
+      .replace("h", hours) // Replace 'h' with hours
+      .replace("m", mins) // Replace 'm' with minutes
+      .replace("s", secs); // Replace 's' with seconds
 
-// const josh = createUser("josh");
-// josh.giveReputation();
-// josh.giveReputation();
+    console.log(output); // Print the formatted time string to the console
+  }
 
-// console.log({
-//   discordName: josh.discordName,
-//   reputation: josh.getReputation(),
-// });
-// // logs { discordName: "@josh", reputation: 2 }
+  stop() {
+    // Method to stop the clock
+    clearInterval(this.timer); // Clear the interval using the stored timer ID
+  }
 
-const first = "wes";
-let second = "bos";
-var age = 100;
-
-function sayHi() {
-  console.log("hi!");
+  start() {
+    // Method to start the clock
+    this.render(); // Render the time immediately
+    this.timer = setInterval(() => this.render(), 1000); // Update the time every 1 second
+  }
 }
+
+let clock = new Clock({ template: "h:m:s" }); // Create a new Clock instance with format 'h:m:s'
+clock.start(); // Start the clock
