@@ -9,6 +9,11 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
+  devServer: {
+    static: "./dist",
+    port: 8081,
+    hot: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",

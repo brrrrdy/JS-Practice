@@ -9,7 +9,7 @@ class CalorieTracker {
   trackCalories(calorieCount) {
     this.currentCalories += calorieCount;
     if (this.currentCalories > this.maxCalories) {
-      logMessage("You've gone over your max calories for today!");
+      logMessage("gell");
     }
   }
 }
