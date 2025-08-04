@@ -2,9 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js" type="module"></script>
-    <title>Document</title>
+    <title>GIF Search</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      #error {
+        color: red;
+        margin-top: 10px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1>GIF Search</h1>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Enter keyword (e.g. cats)"
+    />
+    <button id="searchBtn">Search</button>
+    <p id="error"></p>
+    <img src="#" alt="GIF will appear here" />
+
+    <script>
+      const img = document.querySelector("img");
+      const input = document.getElementById("searchInput");
+      const button = document.getElementById("searchBtn");
+      const error = document.getElementById("error");
+
+      const DEFAULT_IMG =
+        "https://via.placeholder.com/400x300?text=No+GIF+Found";
+
+      function searchGif(query) {
+        error.textContent = "";
+        fetch(
+          `https://api.giphy.com/v1/gifs/translate?api_key=gN4SFwHaxHLH8HXm6UTGuufQxkqPYatf&s=${encodeURIComponent(
+            query
+          )}`,
+          { mode: "cors" }
+        )
+          .then((response) => response.json())
+          .then((response) => {
+            if (response.data && response.data.images) {
+              img.src = response.data.images.original.url;
+            } else {
+              img.src = DEFAULT_IMG;
+              error.textContent = "No GIF found for your search.";
+            }
+          })
+          .catch((err) => {
+            console.error("Fetch error:", err);
+            img.src = DEFAULT_IMG;
+            error.textContent = "An error occurred while fetching the GIF.";
+          });
+      }
+
+      button.addEventListener("click", () => {
+        const query = input.value.trim();
+        if (query) {
+          searchGif(query);
+        } else {
+          error.textContent = "Please enter a search term.";
+        }
+      });
+
+      // Optional: load a default GIF on page load
+      searchGif("cats");
+    </script>
+  </body>
 </html>
